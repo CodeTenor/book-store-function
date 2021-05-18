@@ -1,10 +1,12 @@
-﻿using RestSharp;
+﻿using Microsoft.Extensions.Logging;
+using RestSharp;
 using System;
 
 namespace book_store_function.Services
 {
     public class OpenLibraryApiService: IOpenLibraryApiService
     {
+
         public string SearchBooks(string query)
         {
             try
@@ -49,7 +51,7 @@ namespace book_store_function.Services
         {
             try
             {
-                var client = new RestClient($"http://openlibrary.org${work}.json");
+                var client = new RestClient($"http://openlibrary.org/work/{work}.json");
 
                 client.Timeout = -1;
 
